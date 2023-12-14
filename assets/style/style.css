@@ -1,0 +1,85 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[flappy-bird] {
+  position: relative;
+  border: solid 5px dodgerblue;
+  width: 1200px;
+  height: 700px;
+  background-color: deepskyblue;
+  overflow: hidden;
+}
+[flappy-bird] .passaro {
+  position: absolute;
+  display: none;
+}
+[flappy-bird] .par-de-barreiras {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+[flappy-bird] .par-de-barreiras .barreira {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: blue;
+}
+[flappy-bird] .par-de-barreiras .barreira .boca-cano {
+  height: 30px;
+  width: 130px;
+  background: linear-gradient(90deg, #639301, #a5e82e);
+  border: solid 2px black;
+}
+[flappy-bird] .par-de-barreiras .barreira .corpo-cano {
+  height: 150px;
+  width: 110px;
+  background: linear-gradient(90deg, #639301, #a5e82e);
+  border-left: solid 2px black;
+  border-right: solid 2px black;
+}
+[flappy-bird] .btn-start {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3em;
+  padding: 0.5em 3em;
+  background-color: #a5e82e;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+[flappy-bird] .progresso {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  z-index: 4;
+  font-size: 3em;
+  color: white;
+}
+
+.btn-restart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3em;
+  padding: 0.5em 3em;
+  background-color: #a5e82e;
+  color: white;
+  border-radius: 10px;
+  cursor: pointerw;
+}/*# sourceMappingURL=style.css.map */
