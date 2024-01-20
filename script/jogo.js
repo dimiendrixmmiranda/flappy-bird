@@ -1,22 +1,31 @@
 const jogo = document.querySelector('[flappy-bird]')
 const btnStart = document.querySelector('#start')
 const passaro = document.querySelector('#passaro')
-const abertura = 220
+const elementoPontuacaoMaxima = document.querySelector('#pontuacaoMaxima')
+let pontuacaoMaxima = 0
+const abertura = 190
 let pontos = 0
-const espacoEntreBarreiras = 400
+const espacoEntreBarreiras = 350
 const alturaDoJogo = window.getComputedStyle(jogo).height.split('px')[0]
 const larguraDoJogo = window.getComputedStyle(jogo).width.split('px')[0]
 let temporizador = null
+
+const infoJogo = JSON.parse(localStorage.getItem("infoJogo"))
 
 
 btnStart.addEventListener('click', () => {
     comecarJogo()
 })
 
+if(localStorage.getItem("infoJogo") != null){
+    elementoPontuacaoMaxima.innerHTML = `${localStorage.getItem("infoJogo")}`
+}else{
+    elementoPontuacaoMaxima.innerHTML = 0
+}
 
 function comecarJogo() {
     ocultarBtnStart()
-    const conjuntoBarreiras = criarConjuntoParDeBarreiras(1200)
+    const conjuntoBarreiras = criarConjuntoParDeBarreiras(900)
     const passaro = inserirPassaro(alturaDoJogo)
     inserirPontuacao(pontos)
     temporizador = setInterval(() => {
@@ -24,12 +33,18 @@ function comecarJogo() {
         animarPassaro(passaro)
         if(colidiu(passaro, conjuntoBarreiras)){
             clearInterval(temporizador)
-            const btnRestart = criarElemento('button', 'btn-restart')
+            const btnRestart = criarElemento('button', 'btn')
             btnRestart.innerHTML = 'Restart'
             btnRestart.addEventListener('click', () => {
                 window.location.reload(true)
             })
             jogo.appendChild(btnRestart)
+
+            const pontuacaoAtual = pontos
+            if(pontuacaoAtual > localStorage.getItem("infoJogo")){
+                localStorage.setItem("infoJogo", JSON.stringify(pontuacaoAtual))
+                elementoPontuacaoMaxima.innerHTML = pontuacaoAtual
+            }
         }
     }, 20);
 }
@@ -115,7 +130,6 @@ function inserirPontuacao(pontos) {
     elementoPontuacao.id = 'pontuacao'
     elementoPontuacao.innerHTML = pontos
     jogo.appendChild(elementoPontuacao)
-    console.log(pontos)
 }
 
 function atualizarPontuacao(pontos) {

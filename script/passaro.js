@@ -6,7 +6,7 @@ function inserirPassaro(alturaDoJogo) {
     passaro.style.display = 'block'
     passaro.style.bottom = `${alturaDoJogo / 2}px`
     passaro.style.left = `${larguraDoJogo / 2}px`
-    passaro.style.width = `${60}px`
+    passaro.style.width = `${55}px`
     jogo.appendChild(passaro)
     return passaro
 }

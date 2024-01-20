@@ -1,8 +1,9 @@
+@import '../abstract/_variaveis'
 [flappy-bird]
     position: relative
     border: solid 5px dodgerblue
-    width: 1200px
-    height: 700px
+    width: 900px
+    height: 500px
     background-color: deepskyblue
     overflow: hidden
     .passaro
@@ -19,44 +20,35 @@
             display: flex
             flex-direction: column
             align-items: center
-            background-color: blue
             .boca-cano
                 height: 30px
-                width: 130px
-                background: linear-gradient(90deg, #639301, #a5e82e)
+                width: 110px
+                background: $gradiente-cano
                 border: solid 2px black
             .corpo-cano
                 height: 150px
-                width: 110px
-                background: linear-gradient(90deg, #639301, #a5e82e)
+                width: 90px
+                background: $gradiente-cano
                 border-left: solid 2px black
                 border-right: solid 2px black
-    .btn-start
+    .btn
         position: absolute
         top: 50%
         left: 50%
         transform: translate(-50%, -50%)
-        font-size: 3em
+        font-size: 2em
         padding: .5em 3em
-        background-color: #a5e82e
+        background-color: $cor-verde-claro
         color: white
+        text-shadow: 1px 1px 2px $cor-preta
         border-radius: 10px
         cursor: pointer
+        font-weight: bold
     .progresso
         position: absolute
         top: 2%
         right: 2%
         z-index: 4
         font-size: 3em
-        color: white
-.btn-restart
-    position: absolute
-    top: 50%
-    left: 50%
-    transform: translate(-50%, -50%)
-    font-size: 3em
-    padding: .5em 3em
-    background-color: #a5e82e
-    color: white
-    border-radius: 10px
-    cursor: pointerw
+        color: $cor-branca
+        font-family: $fonte-pontuacao
