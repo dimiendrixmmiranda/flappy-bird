@@ -23,6 +23,10 @@ function animarPassaro(passaro) {
     window.onkeyup = e => {
         voando = false
     }
+
+    document.querySelector('[flappy-bird]').addEventListener('touch', () => {
+        document.body.innerHTML = 'teste'
+    })
     
     if (voando == true) {
         if (getYPassaro(passaro) > alturaMaxima) {

@@ -2,14 +2,15 @@ const jogo = document.querySelector('[flappy-bird]')
 const btnStart = document.querySelector('#start')
 const passaro = document.querySelector('#passaro')
 const elementoPontuacaoMaxima = document.querySelector('#pontuacaoMaxima')
-let pontuacaoMaxima = 0
-const abertura = 190
-let pontos = 0
-const espacoEntreBarreiras = 350
 const alturaDoJogo = window.getComputedStyle(jogo).height.split('px')[0]
 const larguraDoJogo = window.getComputedStyle(jogo).width.split('px')[0]
+let pontuacaoMaxima = 0
+const abertura = alturaDoJogo / 2.5
+let pontos = 0
+const espacoEntreBarreiras = 350
 let temporizador = null
 
+console.log(alturaDoJogo / 5)
 const infoJogo = JSON.parse(localStorage.getItem("infoJogo"))
 
 
