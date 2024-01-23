@@ -4,13 +4,13 @@ const passaro = document.querySelector('#passaro')
 const elementoPontuacaoMaxima = document.querySelector('#pontuacaoMaxima')
 const alturaDoJogo = window.getComputedStyle(jogo).height.split('px')[0]
 const larguraDoJogo = window.getComputedStyle(jogo).width.split('px')[0]
+const posicaoInicial = parseInt(larguraDoJogo)
 let pontuacaoMaxima = 0
-const abertura = alturaDoJogo / 2.5
+const abertura = parseInt(alturaDoJogo / 2.7)
 let pontos = 0
 const espacoEntreBarreiras = 350
 let temporizador = null
 
-console.log(alturaDoJogo / 5)
 const infoJogo = JSON.parse(localStorage.getItem("infoJogo"))
 
 
@@ -26,7 +26,7 @@ if(localStorage.getItem("infoJogo") != null){
 
 function comecarJogo() {
     ocultarBtnStart()
-    const conjuntoBarreiras = criarConjuntoParDeBarreiras(900)
+    const conjuntoBarreiras = criarConjuntoParDeBarreiras(posicaoInicial)
     const passaro = inserirPassaro(alturaDoJogo)
     inserirPontuacao(pontos)
     temporizador = setInterval(() => {
@@ -107,7 +107,8 @@ function animarBarreiras(conjuntoBarreiras){
     const deslocamento = 3
     conjuntoBarreiras.forEach(parDeBarreira => {
         setXParDeBarreiras(parDeBarreira, getXParDeBarreiras(parDeBarreira) - deslocamento)
-        if (getXParDeBarreiras(parDeBarreira) <= -130) {
+        const larguraBarreira = parDeBarreira.clientWidth
+        if (getXParDeBarreiras(parDeBarreira) <= -larguraBarreira) {
             const novoX = getXParDeBarreiras(parDeBarreira) + espacoEntreBarreiras * conjuntoBarreiras.length
             setXParDeBarreiras(parDeBarreira, novoX)
             const alturaBarreira1 = sortearAltura()
@@ -115,7 +116,8 @@ function animarBarreiras(conjuntoBarreiras){
             parDeBarreira.children[0].children[0].style.height = `${alturaBarreira1}px`
             parDeBarreira.children[1].children[1].style.height = `${alturaBarreira2}px`
         }
-        if (getXParDeBarreiras(parDeBarreira) < 500 && getXParDeBarreiras(parDeBarreira) > 496) {
+        const limitePontuacao = parseInt(larguraDoJogo/ 2)        
+        if (getXParDeBarreiras(parDeBarreira) < limitePontuacao && getXParDeBarreiras(parDeBarreira) > limitePontuacao - 4) {
             pontos++
             atualizarPontuacao(pontos)
         }
