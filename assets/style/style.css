@@ -111,8 +111,8 @@ body {
 .maior-pontuacao {
   color: #fff;
   position: absolute;
-  top: 2%;
-  right: 2%;
+  top: 1%;
+  right: 1%;
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -123,7 +123,7 @@ body {
   border: solid 2px #639301;
   border-radius: 10px;
   color: #01071D;
-  padding: 0.5em;
+  padding: 0.3em;
 }
 .maior-pontuacao .texto {
   max-width: 110px;
@@ -131,9 +131,10 @@ body {
   text-align: center;
   line-height: 1;
   font-weight: bold;
+  font-size: 0.8em;
 }
 .maior-pontuacao #pontuacaoMaxima {
-  font-size: 2.5em;
+  font-size: 2em;
   font-family: "Pixel";
   color: white;
   text-shadow: 2px 2px 4px #000;

@@ -17,7 +17,10 @@ const setYPassaro = (passaro, novoY) => passaro.style.bottom = `${novoY}px`
 function animarPassaro(passaro) {
     const alturaMaxima = alturaDoJogo - parseInt(passaro.style.width.split('px')[0])
     window.onkeydown = e => {
-        voando = true
+        console.log(e.code)
+        if(e.code == 'ArrowUp' || e.code == 'Space'){
+            voando = true
+        }
     }
 
     window.onkeyup = e => {

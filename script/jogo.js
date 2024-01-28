@@ -6,16 +6,19 @@ const alturaDoJogo = window.getComputedStyle(jogo).height.split('px')[0]
 const larguraDoJogo = window.getComputedStyle(jogo).width.split('px')[0]
 const posicaoInicial = parseInt(larguraDoJogo)
 let pontuacaoMaxima = 0
-const abertura = parseInt(alturaDoJogo / 2.7)
+const abertura = parseInt(alturaDoJogo / 2.5)
 let pontos = 0
 const espacoEntreBarreiras = 350
 let temporizador = null
+const somFundo = new Audio('../assets/audio/musica-fundo.mp3')
+const somGamerOver = new Audio('../assets/audio/game-over.mp3')
+somFundo.loop
 
 const infoJogo = JSON.parse(localStorage.getItem("infoJogo"))
 
-
 btnStart.addEventListener('click', () => {
     comecarJogo()
+    somFundo.play()
 })
 
 if(localStorage.getItem("infoJogo") != null){
@@ -46,6 +49,8 @@ function comecarJogo() {
                 localStorage.setItem("infoJogo", JSON.stringify(pontuacaoAtual))
                 elementoPontuacaoMaxima.innerHTML = pontuacaoAtual
             }
+            somFundo.pause()
+            somGamerOver.play()
         }
     }, 20);
 }
